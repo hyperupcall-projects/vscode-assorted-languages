@@ -1,0 +1,11 @@
+[FD.edk2_build]
+	BaseAddress = 0x00800000
+	Size        = 0x00200000
+	ErasePolarity = 1
+
+[FV.FVMAIN]
+	BlockSize     = 0x10000
+	FvAlignment   = 16
+	APRIORI DXE {
+		INF MdeModulePkg/Core/Dxe/DxeMain.inf
+	}

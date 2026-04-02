@@ -1,0 +1,11 @@
+[Defines]
+	DEC_SPECIFICATION = 0x00010005
+	PACKAGE_NAME      = edk2_library
+	PACKAGE_GUID      = d4e5f6a7-b8c9-0123-defa-234567890123
+	PACKAGE_VERSION   = 1.0
+
+[Includes]
+	Include
+
+[LibraryClasses]
+	SampleLib|Include/Library/SampleLib.h

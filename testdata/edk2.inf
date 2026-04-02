@@ -1,0 +1,12 @@
+[Defines]
+	INF_VERSION    = 0x00010005
+	BASE_NAME      = edk2_module
+	FILE_GUID      = a1b2c3d4-e5f6-7890-abcd-ef1234567890
+	MODULE_TYPE    = UEFI_DRIVER
+	VERSION_STRING = 1.0
+
+[Sources]
+	Module.c
+
+[Packages]
+	MdePkg/MdePkg.dec

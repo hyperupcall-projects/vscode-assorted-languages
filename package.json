@@ -174,35 +174,35 @@
 				"extensions": [
 					".dsc"
 				],
-				"configuration": "./language-configuration/edk2_dsc.language-configuration.json"
+				"configuration": "./language-configuration/edk2-dsc.language-configuration.json"
 			},
 			{
 				"id": "edk2_dec",
 				"extensions": [
 					".dec"
 				],
-				"configuration": "./language-configuration/edk2_dec.language-configuration.json"
+				"configuration": "./language-configuration/edk2-dec.language-configuration.json"
 			},
 			{
 				"id": "edk2_fdf",
 				"extensions": [
 					".fdf"
 				],
-				"configuration": "./language-configuration/edk2_fdf.language-configuration.json"
+				"configuration": "./language-configuration/edk2-fdf.language-configuration.json"
 			},
 			{
 				"id": "edk2_inf",
 				"extensions": [
 					".inf"
 				],
-				"configuration": "./language-configuration/edk2_inf.language-configuration.json"
+				"configuration": "./language-configuration/edk2-inf.language-configuration.json"
 			},
 			{
 				"id": "edk2_uni",
 				"extensions": [
 					".uni"
 				],
-				"configuration": "./language-configuration/edk2_uni.language-configuration.json"
+				"configuration": "./language-configuration/edk2-uni.language-configuration.json"
 			},
 			{
 				"id": "edk2_vfr",
@@ -211,7 +211,7 @@
 					".Vfr",
 					".hfr"
 				],
-				"configuration": "./language-configuration/edk2_vfr.language-configuration.json"
+				"configuration": "./language-configuration/edk2-vfr.language-configuration.json"
 			},
 			{
 				"id": "env",

@@ -1,0 +1,4 @@
+#langdef en-US "English"
+
+#string STR_MODULE_NAME   #language en-US "EDK2 Module"
+#string STR_MODULE_HELP   #language en-US "This is a sample EDK2 module."
