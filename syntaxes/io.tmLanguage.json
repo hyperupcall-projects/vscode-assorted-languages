@@ -41,13 +41,13 @@
 					"begin": "/\\*",
 					"beginCaptures": {
 						"0": {
-							"name": "unctuation.definition.comment.begin.io"
+							"name": "punctuation.definition.comment.begin.io"
 						}
 					},
 					"end": "\\*/",
 					"endCaptures": {
 						"0": {
-							"name": "unctuation.definition.comment.end.io"
+							"name": "punctuation.definition.comment.end.io"
 						}
 					}
 				}

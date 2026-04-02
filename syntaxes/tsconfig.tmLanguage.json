@@ -103,14 +103,6 @@
 				}
 			]
 		},
-		"conditions": {
-			"patterns": [
-				{
-					"name": "variable.other.tsconfig",
-					"match": "\\[(adminUser|language|IP|hostname|applicationContext|hour|minute|month|year|dayofweek|dayofmonth|dayofyear|usergroup|loginUser|page|treeLevel|PIDinRootline|PIDupinRootline|compatVersion|globalVar|globalString|global|userFunc|end|((?:\\{1,2}\\w+|\\w+\\\\{1,2})(?:\\w+\\\\{0,2})+)).*\\]"
-				}
-			]
-		},
 		"cobjects": {
 			"patterns": [
 				{

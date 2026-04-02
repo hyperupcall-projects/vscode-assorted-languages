@@ -229,7 +229,7 @@
 							"name": "entity.other.attribute-name.pseudo-class.css"
 						},
 						"2": {
-							"name": "puncutation.definition.entity.css"
+							"name": "punctuation.definition.entity.css"
 						},
 						"3": {
 							"name": "punctuation.section.function.css"
@@ -249,7 +249,7 @@
 							"name": "entity.other.attribute-name.pseudo-class.css"
 						},
 						"2": {
-							"name": "puncutation.definition.entity.css"
+							"name": "punctuation.definition.entity.css"
 						},
 						"3": {
 							"name": "punctuation.section.function.css"
