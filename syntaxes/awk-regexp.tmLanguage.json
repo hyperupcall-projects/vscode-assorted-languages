@@ -1,129 +1,196 @@
 {
 	"$schema": "https://json.schemastore.org/tmLanguage.json",
-	"name": "Regexp",
+	"name": "AWK Regular Expressions",
 	"scopeName": "source.awk.regexp",
-	"injectionSelector": "L:string.regexp.js -meta.embedded.regexp",
+	"injectionSelector": "L:string.regexp.awk -meta.embedded.awk.regexp, L:string.regexp.awk -meta.embedded.awk.regexp, L:string.regexp.awk -meta.embedded.awk.regexp",
 	"patterns": [
 		{
-			"begin": "(?<!\\+\\+)(?<=(?>[=(:,\\[?+!]|(?>^|[^._$[:alnum:]])(?>return|case)|=>|&&|\\|\\||\\*/)\\s*\\/)(?![\\/*])",
+			"begin": "(?<=/)(?!/|$)",
 			"end": "(?=/|$)",
-			"name": "meta.embedded.regexp",
-			"patterns": [{ "include": "#regexp" }]
+			"name": "meta.embedded.awk.regexp",
+			"contentName": "string.regexp.awk",
+			"patterns": [ { "include": "#regexp" } ]
 		}
 	],
 	"repository": {
 		"regexp": {
 			"patterns": [
 				{
-					"name": "keyword.control.anchor.regexp",
-					"match": "\\\\[bB]|\\^|\\$"
+					"match": "\\\\[Bb]|[$^]",
+					"name": "keyword.control.anchor.regexp.awk"
 				},
 				{
-					"match": "\\\\[1-9]\\d*|\\\\k<([a-zA-Z_$][\\w$]*)>",
+					"match": "\\\\([1-9][0-9]*)",
 					"captures": {
-						"0": { "name": "keyword.other.back-reference.regexp" },
-						"1": { "name": "variable.other.regexp" }
+						"0": { "name": "keyword.other.back-reference.regexp.awk" },
+						"1": { "name": "constant.numeric.regexp.awk" }
 					}
 				},
 				{
-					"name": "keyword.operator.quantifier.regexp",
-					"match": "[?+*]|\\{(\\d+,\\d+|\\d+,|,\\d+|\\d+)\\}\\??"
-				},
-				{
-					"name": "keyword.operator.or.regexp",
-					"match": "\\|"
-				},
-				{
-					"name": "meta.group.assertion.regexp",
-					"begin": "(\\()((\\?=)|(\\?!)|(\\?<=)|(\\?<!))",
-					"beginCaptures": {
-						"1": { "name": "punctuation.definition.group.regexp" },
-						"2": { "name": "punctuation.definition.group.assertion.regexp" },
-						"3": { "name": "meta.assertion.look-ahead.regexp" },
-						"4": { "name": "meta.assertion.negative-look-ahead.regexp" },
-						"5": { "name": "meta.assertion.look-behind.regexp" },
-						"6": { "name": "meta.assertion.negative-look-behind.regexp" }
-					},
-					"end": "(\\))|(?=/)",
-					"endCaptures": { "1": { "name": "punctuation.definition.group.regexp" } },
-					"patterns": [{ "include": "#regexp" }]
-				},
-				{
-					"name": "meta.group.regexp",
-					"begin": "\\((?:(\\?:)|(?:\\?<([a-zA-Z_$][\\w$]*)>))?",
-					"beginCaptures": {
-						"0": { "name": "punctuation.definition.group.regexp" },
-						"1": { "name": "punctuation.definition.group.no-capture.regexp" },
-						"2": { "name": "variable.other.regexp" }
-					},
-					"end": "\\)|(?=/)",
-					"endCaptures": { "0": { "name": "punctuation.definition.group.regexp" } },
-					"patterns": [{ "include": "#regexp" }]
-				},
-				{
-					"name": "constant.other.character-class.set.regexp",
-					"begin": "(\\[)(\\^)?",
-					"beginCaptures": {
-						"1": { "name": "punctuation.definition.character-class.regexp" },
-						"2": { "name": "keyword.operator.negation.regexp" }
-					},
-					"end": "(\\])",
-					"endCaptures": {
-						"1": { "name": "punctuation.definition.character-class.regexp" }
-					},
-					"comment": "as a temporary measure; because balancedBracketScopes, unbalancedBracketScopes and tokenTypes don't seem to work with injected grammars",
-					"contentName": "regex",
+					"begin": "\\\\k<?",
+					"end": ">|(?=/)|$",
+					"name": "keyword.other.back-reference.regexp.awk",
 					"patterns": [
 						{
-							"name": "constant.other.character-class.range.regexp",
-							"match": "(?>(\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4}))|(\\\\c[A-Z])|(\\\\.)|.)-(?>(\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4}))|(\\\\c[A-Z])|(\\\\.)|[^\\]\\\\])",
+							"match": "[$_[:alpha:]][$_[:alnum:]]*",
+							"name": "variable.other.regexp.awk"
+						}
+					]
+				},
+				{
+					"match": "\\G(?>[*+?]|{(?>\\d+,?\\d*|,\\d+)}\\??)",
+					"name": "invalid.illegal.keyword.operator.quantifier.regexp.awk"
+				},
+				{
+					"match": "[*+?]",
+					"name": "keyword.operator.quantifier.regexp.awk"
+				},
+				{
+					"match": "({(?>\\d+,?\\d*|,\\d+)}\\??)",
+					"captures": {
+						"0": { "name": "meta.embedded.quantifier.range.regexp.awk" },
+						"1": { "name": "keyword.operator.quantifier.regexp.awk" }
+					}
+				},
+				{
+					"match": "\\|",
+					"name": "keyword.operator.or.regexp.awk"
+				},
+				{
+					"match": "\\.",
+					"name": "constant.character.class.regexp.awk"
+				},
+				{
+					"match": "\\)",
+					"name": "meta.embedded.group.regexp.awk",
+					"captures": { "0": { "name": "invalid.illegal.unclosed.group.regexp.awk" } }
+				},
+				{
+					"begin": "(\\()((\\?=)|(\\?!)|(\\?<=)|(\\?<!))",
+					"end": "\\)|(?=/)|$",
+					"beginCaptures": {
+						"1": { "name": "punctuation.definition.group.regexp.awk" },
+						"2": { "name": "punctuation.definition.group.assertion.regexp.awk" },
+						"3": { "name": "meta.assertion.look-ahead.regexp.awk" },
+						"4": { "name": "meta.assertion.negative-look-ahead.regexp.awk" },
+						"5": { "name": "meta.assertion.look-behind.regex.regexp.awk" },
+						"6": { "name": "meta.assertion.negative-look-behind.regex.regexp.awk" }
+					},
+					"endCaptures": { "0": { "name": "punctuation.definition.group.regexp.awk" } },
+					"name": "meta.embedded.group.assertion.regexp.awk",
+					"contentName": "string.regexp.awk",
+					"patterns": [ { "include": "#regexp" } ]
+				},
+				{
+					"begin": "\\((?>(\\?([-ims]*):)|\\?<([$_[:alpha:]][$_[:alnum:]]*)>)?",
+					"end": "\\)|(?=/)|$",
+					"beginCaptures": {
+						"0": { "name": "punctuation.definition.group.regexp.awk" },
+						"1": { "name": "punctuation.definition.group.no-capture.regexp.awk" },
+						"2": { "name": "keyword.other.flags.regexp.awk" },
+						"3": { "name": "variable.other.regexp.awk" }
+					},
+					"endCaptures": { "0": { "name": "punctuation.definition.group.regexp.awk" } },
+					"name": "meta.embedded.group.regexp.awk",
+					"contentName": "string.regexp.awk",
+					"patterns": [ { "include": "#regexp" } ]
+				},
+				{
+					"begin": "(\\[)(\\^)?",
+					"end": "]|$",
+					"beginCaptures": {
+						"1": { "name": "punctuation.definition.character-class.regexp.awk" },
+						"2": { "name": "keyword.operator.negation.regexp.awk" }
+					},
+					"endCaptures": { "0": { "name": "punctuation.definition.character-class.regexp.awk" } },
+					"name": "meta.embedded.character-class.regexp.awk",
+					"contentName": "constant.other.character-class.set.regexp.regex.awk",
+					"patterns": [
+						{
+							"match": "[0-9]-[0-9]",
+							"name": "constant.numeric.character-class.range.regexp.awk"
+						},
+						{
+							"match": "[a-z]-[a-z]|[A-Z]-[A-Z]",
+							"name": "variable.other.constant.character-class.range.regexp.awk"
+						},
+						{
+							"match": "(?>(\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4}))|(\\\\c[A-Z])|(\\\\[^wWsSdD])|.)-(?>(\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4}))|(\\\\c[A-Z])|(\\\\[^wWsSdD])|[^]])",
 							"captures": {
-								"1": { "name": "constant.character.numeric.regexp" },
-								"2": { "name": "constant.character.control.regexp" },
-								"3": { "name": "constant.character.escape.backslash.regexp" },
-								"4": { "name": "constant.character.numeric.regexp" },
-								"5": { "name": "constant.character.control.regexp" },
-								"6": { "name": "constant.character.escape.backslash.regexp" }
-							}
+								"0": { "name": "support.class.range.regexp.awk" },
+								"1": { "name": "constant.character.numeric.regexp.awk" },
+								"2": { "name": "constant.character.control.regexp.awk" },
+								"3": { "name": "constant.character.escape.backslash.regexp.awk" },
+								"4": { "name": "constant.character.numeric.regexp.awk" },
+								"5": { "name": "constant.character.control.regexp.awk" },
+								"6": { "name": "constant.character.escape.backslash.regexp.awk" }
+							},
+							"name": "constant.other.character-class.range.regexp.awk"
 						},
 						{ "include": "#regex-character-class" }
 					]
 				},
-				{ "include": "#regex-character-class" },
-				{
-					"match": "\\)",
-					"name": "punctuation.definition.group.regexp"
-				},
-				{
-					"match": "[^$^.+*?|\\[{()\\\\/]+",
-					"name": "string.regexp.js"
-				},
-				{
-					"match": ".+",
-					"name": "invalid report.to.RedCMD"
-				}
+				{ "include": "#regex-character-class" }
 			]
 		},
 		"regex-character-class": {
 			"patterns": [
 				{
-					"name": "constant.other.character-class.regexp",
-					"match": "\\\\[wWsSdDtrnvf]|\\."
+					"match": "\\\\(?>[0-7]{3}|x\\h{2}|u\\h{4})",
+					"name": "constant.character.numeric.regexp.awk"
 				},
 				{
-					"name": "constant.character.numeric.regexp",
-					"match": "\\\\([0-7]{3}|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4})"
+					"match": "\\\\[wWsSdD]",
+					"name": "constant.character.class.regexp.awk"
 				},
 				{
-					"name": "constant.character.control.regexp",
-					"match": "\\\\c[A-Z]"
+					"match": "\\\\[0bfnrtv]",
+					"name": "constant.character.escape.character.regexp.awk"
 				},
 				{
-					"name": "constant.character.escape.backslash.regexp",
-					"match": "\\\\."
+					"match": "\\\\c[A-Za-z]",
+					"name": "constant.character.control.regexp.awk"
+				},
+				{ "include": "#unicode" },
+				{
+					"match": "(\\\\).",
+					"captures": { "1": { "name": "constant.character.escape.backslash.regexp.awk" } }
+				}
+			]
+		},
+		"unicode": {
+			"comment": "Unicode requires flag u or v to be active",
+			"patterns": [
+				{
+					"match": "\\\\u{(0*\\h{4,5})}",
+					"name": "meta.embedded.character.numeric.unicode.regexp.awk",
+					"captures": {
+						"0": { "name": "constant.character.numeric.regexp.awk" },
+						"1": { "name": "constant.numeric.regexp.awk" }
+					}
+				},
+				{
+					"comment": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Unicode_character_class_escape#syntax",
+					"begin": "\\\\[Pp]{",
+					"end": "}|(?=/)|$",
+					"captures": { "0": { "name": "constant.character.class.property.regexp.awk" } },
+					"name": "meta.embedded.character.class.property.regexp.awk",
+					"contentName": "string.regexp.awk",
+					"patterns": [
+						{
+							"match": "(=)([a-zA-Z0-9_]+)",
+							"captures": {
+								"1": { "name": "punctuation.definition.property.value.regexp.awk" },
+								"2": { "name": "variable.other.value.regexp.awk" }
+							}
+						},
+						{
+							"match": "[a-zA-Z_]+",
+							"name": "variable.other.constant.property.regexp.awk"
+						}
+					]
 				}
 			]
 		}
-	},
-	"version": "https://github.com/RedCMD/regex-syntax-highlighter-vscode"
+	}
 }
