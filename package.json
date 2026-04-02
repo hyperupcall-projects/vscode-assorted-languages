@@ -25,8 +25,8 @@
 		"lint": "hyperupcall-scripts-nodejs lint"
 	},
 	"devDependencies": {
-		"@hyperupcall/scripts-nodejs": "0.2.1",
-		"prettier-plugin-sort-json": "^4.0.0"
+		"@hyperupcall/scripts-nodejs": "0.8.0",
+		"prettier-plugin-sort-json": "^4.2.0"
 	},
 	"icon": "assets/icon.png",
 	"contributes": {
