@@ -1,6 +1,5 @@
 node_modules/
 build/
 *.log
-!testdata/1.log
 *.vsix
-.env*
+.ovsx-token

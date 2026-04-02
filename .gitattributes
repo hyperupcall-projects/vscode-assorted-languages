@@ -1,6 +1,3 @@
-# foxxo start
 * text=auto eol=lf
 bake linguist-generated
-# foxxo end
-
 *.json linguist-detectable

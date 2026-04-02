@@ -7,16 +7,10 @@
 	"categories": [
 		"Programming Languages"
 	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/fox-projects/vscode-assorted-languages.git"
-	},
-	"bugs": {
-		"url": "https://github.com/fox-projects/vscode-assorted-languages/issues"
-	},
-	"author": "Edwin Kofler <edwin@kofler.dev> (https://edwinkofler.com)",
 	"publisher": "EdwinKofler",
 	"license": "BSD-3-Clause",
+	"private": true,
+	"packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
 	"engines": {
 		"vscode": "^1.54.0"
 	},
